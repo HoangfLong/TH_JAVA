@@ -3,9 +3,11 @@ package com.example.TH_buoi3.controller;
 import com.example.TH_buoi3.entity.Book;
 import com.example.TH_buoi3.services.BookService;
 import com.example.TH_buoi3.services.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +22,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
     private CategoryService categoryService;
 
     @GetMapping
@@ -37,7 +40,12 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    public String addBookForm(@ModelAttribute("book") Book book) {
+    public String addBookForm(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // Xử lý các lỗi xác thực ở đây (ví dụ: trả về trang nhập liệu với thông báo lỗi)
+            return "book/add";
+        }
+        // Nếu không có lỗi xác thực, thực hiện thêm sách vào cơ sở dữ liệu
         bookService.addBook(book);
         return "redirect:/books";
     }
