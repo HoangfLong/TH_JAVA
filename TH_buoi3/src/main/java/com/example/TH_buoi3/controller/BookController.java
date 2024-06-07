@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,7 +35,6 @@ public class BookController {
         model.addAttribute("categories",categoryService.getAllCategories());
         return "book/add";
     }
-
     @PostMapping("/add")
     public String addBookForm(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -49,4 +45,11 @@ public class BookController {
         bookService.addBook(book);
         return "redirect:/books";
     }
+    //Xóa 1 cuốn sách
+    @GetMapping("/delete/{bookId}")
+    public String deteteBook(@PathVariable Long bookId) {
+        bookService.deleteBook(bookId);
+        return "redirect:/books";
+    }
+    
 }
