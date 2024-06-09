@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập tuần 2</title>
+    <th:block th:replace="~{layout::link-css}"></th:block>
+    <style>
+        body {
+            padding-top: 60px; /* Để cho tiêu đề navbar không che phủ nội dung */
+        }
+    </style>
+</head>
+<body>
+<th:block th:replace="~{layout::header}"></th:block>
+<div class="container">
+    <h1 th:text="${title}" class="my-4"></h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Mã sách</th>
+            <th scope="col">Tên sách</th>
+            <th scope="col">Tác giả</th>
+            <th scope="col">Giá bán</th>
+            <th scope="col">Danh mục</th>
+            <th scope="col">Chức năng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book: ${listBook}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.price}"></td>
+            <td th:text="${book.category}"></td>
+            <td>
+                <a th:href="@{/book/edit/{id}(id=${book.id})}" class="btn btn-primary btn-sm">Sửa</a>
+                <a th:href="@{/book/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Bạn có muốn xoá?')">Xoá</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<th:block th:replace="~{layout::footer}"></th:block>
+</body>
+</html>

@@ -1,4 +1,5 @@
-package com.example.TH_Buoi2.model;
+package com.example.TH_buoi2.model;
+
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

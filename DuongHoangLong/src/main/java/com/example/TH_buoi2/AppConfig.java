@@ -1,6 +1,6 @@
-package com.example.TH_Buoi2;
+package com.example.TH_buoi2;
 
-import com.example.TH_Buoi2.model.Book;
+import com.example.TH_buoi2.model.Book;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,16 +21,16 @@ public class AppConfig {
         book1.setCategory("Sofware Engineering");
         listBooks.add(book1);
 
-        Book book2 = new Book(2,"Design Pattern","Erich",55.5,"Sofware");
+//        Book book2 = new Book(2, "Design Patterns: Elements of Reusuable Object-Oriented Software","HoHO",222.5,"Hehe");
 
-//        Book book2 = Book.builder()
-//                .id(2)
-//                .title("Design Patterns: Elements of Reusuable Object-Oriented Software")
-//                .author("Erich Gramma")
-//                .price(55.0)
-//                .category("Sofware Design")
-//                .build();
-//        listBooks.add(book2);
+        Book book2 = Book.builder()
+                .id(2)
+                .title("Design Patterns: Elements of Reusuable Object-Oriented Software")
+                .author("Erich Gramma")
+                .price(55.0)
+                .category("Sofware Design")
+                .build();
+        listBooks.add(book2);
 
         Book book3 = Book.builder()
                 .id(3)
@@ -40,6 +40,7 @@ public class AppConfig {
                 .category("Programming")
                 .build();
         listBooks.add(book3);
+
         return listBooks;
     }
 }
