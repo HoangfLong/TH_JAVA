@@ -51,5 +51,20 @@ public class BookController {
         bookService.deleteBook(bookId);
         return "redirect:/books";
     }
-    
+
+    //Sửa 1 cuốn sách
+    @GetMapping("/edit/{id}")
+    public String showeditForm(@PathVariable Long id, Model model) {
+        model.addAttribute("book", bookService.getBookById(id));
+        model.addAttribute("categories", categoryService.getAllCategories());
+
+        return "books/edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateBook(@PathVariable Long id, @Valid Book book, BindingResult result) {
+
+        bookService.updateBook(book);
+        return "redirect:/books";
+    }
 }

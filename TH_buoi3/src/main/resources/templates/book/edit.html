@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<th:block th:replace="layout :: header"></th:block>
+<body>
+<div class="container">
+    <h1>Add Book</h1>
+    <form th:action="@{/books/edit}" th:object="${book}" method="post">
+
+    </form>
+</div>
+</body>
+</html>
