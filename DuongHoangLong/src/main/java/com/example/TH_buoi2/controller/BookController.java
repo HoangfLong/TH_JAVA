@@ -43,19 +43,19 @@ public class BookController {
             model.addAttribute("book", updatedBook);
             return "book/edit";
         }
-        // Tìm cuốn sách cần chỉnh sửa trong danh sách hoặc từ cơ sở dữ liệu
         for (Book book : listBook) {
             if (book.getId() == (id)) {
-                // Cập nhật thông tin cuốn sách
+
                 book.setTitle(updatedBook.getTitle());
                 book.setAuthor(updatedBook.getAuthor());
                 book.setPrice(updatedBook.getPrice());
                 book.setCategory(updatedBook.getCategory());
-                // Lưu thay đổi và chuyển hướng về trang chủ
+
                 return "redirect:/";
             }
         }
-        // Nếu không tìm thấy cuốn sách, trả về lỗi 404 hoặc xử lý theo cách khác
-        return "error-404"; // Hoặc thực hiện xử lý khác tùy thuộc vào yêu cầu của bạn
+        return "error-404";
     }
+
+
 }

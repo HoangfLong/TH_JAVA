@@ -1,5 +1,6 @@
 package com.example.TH_buoi2.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Book {
-    @NotNull(message = "ID không được để trống")
-    @Min(value = 1, message = "ID phải là số nguyên dương lớn hơn 0")
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotBlank(message = "Tiêu để không được để trống")
