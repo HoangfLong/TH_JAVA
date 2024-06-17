@@ -14,6 +14,8 @@
             <label class="form-label" for="title">Title:</label>
             <input class="form-control" type="text" th:field="*{title}" id="title">
             <span class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+            <!--            Liên kết thuộc tính value của trường nhập liệu với một thuộc tính của đối tượng đang được bind (đối tượng book). -->
+            <!--            Cú pháp *{title} tương đương với book.title.-->
         </div>
         <div class="col-6 mb-3">
             <label class="form-label" for="author">Author:</label>
@@ -30,6 +32,9 @@
                 <option value="">-- Select Category --- </option>
                 <option th:each="category: ${categories}" th:value="${category.id}"
                         th:text="${category.name}"></option>
+<!--                th:each: Vòng lặp, lặp qua các phần tử của categories và tạo các thẻ <option> tương ứng.-->
+<!--                th:value: Thiết lập thuộc tính value của thẻ <option> bằng giá trị của category.id.-->
+<!--                th:text: Thiết lập nội dung văn bản của thẻ <option> bằng giá trị của category.name.-->
             </select>
             <span class="text-danger" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span>
         </div>
