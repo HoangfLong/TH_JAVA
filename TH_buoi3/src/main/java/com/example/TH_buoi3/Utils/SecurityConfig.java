@@ -14,9 +14,13 @@ import org.springframework.security.web.SecurityFilterChain;
 
 
 @Configuration
+//@EnableWebSecurity: Bật tính năng bảo mật web của Spring Security.
 @EnableWebSecurity
+//@EnableMethodSecurity: Cho phép bảo mật dựa trên annotation tại mức phương thức,
+// giúp định nghĩa quyền truy cập chi tiết cho các phương thức cụ thể.
 @EnableMethodSecurity
 public class SecurityConfig {
+//  @Bean, nghĩa là nó trả về một đối tượng UserDetailsService sẽ được quản lý bởi Spring Container.
     @Bean
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailService();

@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class BookService {
+//  @Autowired là một annotation trong Spring dùng để tự động tiêm (inject) các bean vào các thuộc tính, constructor hoặc phương thức trong một class
     @Autowired
     private IBookRepository bookRepository;
 
